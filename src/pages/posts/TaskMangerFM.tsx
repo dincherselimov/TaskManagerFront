@@ -34,7 +34,7 @@ export default function TaskManagerFM() {
       }
     };
     fetchData();
-  }, [tasks]);
+  }, []);
 
   const handleAddTask = async () => {
     try {
@@ -59,15 +59,27 @@ export default function TaskManagerFM() {
           selectedTask.description,
           selectedTask.dueDate
         );
+        
         setTasks((prevTasks) =>
           prevTasks.map((task) =>
             task.id === updatedTaskV.id ? updatedTaskV : task
           )
         );
+        
         closeUpdateTaskModal();
       }
     } catch (error) {
       console.error("Error updating task:", error);
+    }
+  };
+
+  const handleDeleteTask = async (taskId: number) => {
+    try {
+      await deleteTask(taskId);
+      const updatedTaskList = await fetchTaskList();
+      setTasks(updatedTaskList);
+    } catch (error) {
+      console.error("Error deleting task:", error);
     }
   };
 
@@ -169,7 +181,7 @@ export default function TaskManagerFM() {
               <td>
                 <button
                   className="delete-button"
-                  onClick={() => deleteTask(task.id)}
+                  onClick={() => handleDeleteTask(task.id)}
                 >Delete</button>
               </td>
               <td>
