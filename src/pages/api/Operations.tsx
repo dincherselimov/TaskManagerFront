@@ -1,4 +1,3 @@
-// api.js
 import axios from "axios";
 
 export const fetchTaskList = async () => {
@@ -10,9 +9,6 @@ export const fetchTaskList = async () => {
     throw error;
   }
 };
-
-
-
 
 export const addTaskToList = async (
   title: string,
@@ -26,7 +22,6 @@ export const addTaskToList = async (
       dueDate,
     });
 
-    // Fetch the updated task list
     const data = await fetchTaskList();
     return data;
   } catch (error) {
@@ -34,6 +29,8 @@ export const addTaskToList = async (
     throw error;
   }
 };
+
+
 export const updateTask = async (
   id: number,
   title: string,
@@ -47,8 +44,8 @@ export const updateTask = async (
       dueDate,
     });
 
-    // Fetch the updated task list
     const data = await fetchTaskList();
+    console.log(data);
     return data;
   } catch (error) {
     console.error("Error updating task:", error);
@@ -59,7 +56,6 @@ export const updateTask = async (
 export const deleteTask = async (id: number) => {
   try {
     await axios.post(`http://127.0.0.1:8000/taskm/delete/${id}`);
-    // Fetch the updated task list
     const data = await fetchTaskList();
     return data;
   } catch (error) {
