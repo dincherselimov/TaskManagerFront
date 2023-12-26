@@ -43,7 +43,6 @@ export const updateTask = async (
       description,
       dueDate,
     });
-
     const data = await fetchTaskList();
     console.log(data);
     return data;
