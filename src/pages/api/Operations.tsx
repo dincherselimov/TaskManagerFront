@@ -30,7 +30,6 @@ export const addTaskToList = async (
   }
 };
 
-
 export const updateTask = async (
   id: number,
   title: string,
@@ -44,7 +43,6 @@ export const updateTask = async (
       dueDate,
     });
     const data = await fetchTaskList();
-    console.log(data);
     return data;
   } catch (error) {
     console.error("Error updating task:", error);
