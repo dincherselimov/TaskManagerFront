@@ -13,6 +13,10 @@ interface Task {
   dueDate: string;
 }
 
+/**
+ * 
+ * @returns 
+ */
 export default function TaskManagerFM() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [newTask, setNewTask] = useState({
@@ -20,6 +24,7 @@ export default function TaskManagerFM() {
     description: "",
     dueDate: "",
   });
+  
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);
@@ -119,7 +124,7 @@ export default function TaskManagerFM() {
 
   return (
     <div className="task-list-container">
-      <h1 className="list">Task List</h1>
+      <h1 className="list">Task Manger</h1>
 
       <button className="add-task-button" onClick={openAddTaskModal}>
         Add Task
@@ -132,6 +137,7 @@ export default function TaskManagerFM() {
             <input
               type="text"
               name="title"
+              required
               value={newTask.title}
               onChange={handleInputChange}
             />
@@ -148,6 +154,7 @@ export default function TaskManagerFM() {
             <input
               type="text"
               name="dueDate"
+              required
               value={newTask.dueDate}
               onChange={handleInputChange}
             />
@@ -164,12 +171,12 @@ export default function TaskManagerFM() {
 
       <table className="task-table">
         <thead>
-          <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Due Date</th>
-            <th>Delete</th>
-            <th>Update</th>
+          <tr className="trs">
+            <th className="ths">Title</th>
+            <th className="ths">Description</th>
+            <th className="ths">Due Date</th>
+            <th className="ths">Delete</th>
+            <th className="ths">Update</th>
           </tr>
         </thead>
         <tbody>
@@ -198,6 +205,7 @@ export default function TaskManagerFM() {
                       <input
                         type="text"
                         name="title"
+                        required
                         value={selectedTask?.title || ""}
                         onChange={handleUpdateInputChange}
                       />
@@ -206,6 +214,7 @@ export default function TaskManagerFM() {
                       <input
                         type="text"
                         name="description"
+                        required
                         value={selectedTask?.description || ""}
                         onChange={handleUpdateInputChange}
                       />
@@ -214,6 +223,7 @@ export default function TaskManagerFM() {
                       <input
                         type="text"
                         name="dueDate"
+                        required
                         value={selectedTask?.dueDate || ""}
                         onChange={handleUpdateInputChange}
                       />

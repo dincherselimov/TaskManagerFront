@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import TaskManagerFM from "./posts/TaskMangerFM";
+import HomePage from "./posts/HomePage";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
         <link rel="icon" href="/favicon-ds.png" />
       </Head>
       <TaskManagerFM/>
+      {/* <HomePage/> */}
     </div>
   );
 }
