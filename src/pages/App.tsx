@@ -10,6 +10,8 @@ function App() {
         <link rel="icon" href="/favicon-ds.png" />
       </Head>
       <TaskManagerFM/>
+
+      {/* HomePage contains the login/sign up  */}
       {/* <HomePage/> */}
     </div>
   );
